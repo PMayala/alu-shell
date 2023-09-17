@@ -1,0 +1,2 @@
+#!/bin/bash
+if [ -f /tmp/my_first_directory/betty ]; then rm /tmp/my_first_directory/betty fi
