@@ -1,2 +1,7 @@
 #!/bin/bash
-chown --from=guillaume betty hello
+
+# Check if the current owner of the file is "guillaume"
+if [ "$(stat -c %U hello)" = "guillaume" ]; then
+    # Change the owner to "vincent"
+    chown vincent hello
+fi
