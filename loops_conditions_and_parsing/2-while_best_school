@@ -1,8 +1,20 @@
 #!/usr/bin/env bash
+#fizzbuzz stuf
 
-count=0
-while [ $count -lt 10 ]
+count=1
+while [ $count -ne 101 ]
 do
-    echo "Best School"
+    if [ $((count % 15)) -eq 0 ]
+    then
+	echo "FizzBuzz"
+    elif [ $((count % 3)) -eq 0 ]
+    then
+	echo "Fizz"
+    elif [ $((count % 5)) -eq 0 ]
+    then
+        echo "Buzz"
+    else
+	echo $count
+    fi
     ((count++))
 done
