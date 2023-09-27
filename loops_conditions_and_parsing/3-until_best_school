@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
-#read and cut stuff
+# Displays "Best School" 10 times using an until loop.
 
-while read -r name
+count=0
+
+until [ $count -eq 10 ]
 do
-   echo "$name" | cut -d ":" -f1,4,6
-done < /etc/passwd
+  echo "Best School"
+  (( count++ ))
+done
