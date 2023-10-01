@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
 # This script displays its own PID.
 
+<<<<<<< HEAD
 echo $$
+=======
+# Display the PID of the current script
+echo "$$"
+>>>>>>> 696fc8f5fbc40e13046b47b262c7f137f0a47d46
