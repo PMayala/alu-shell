@@ -1,11 +1,18 @@
-#!/usr/bin/env bash
-<<<<<<< HEAD
-# This script displays a list of currently running processes with user-oriented formatting and hierarchy.
+#!/bin/bash
+# List all processes with a tree-like hierarchy
 
-ps aux --forest
-=======
-# This script displays a list of currently running processes with user-oriented format and hierarchy.
+# Function to generate process hierarchy
+generate_process_tree() {
+  local parent_pid="$1"
+  local prefix="$2"
+  local processes="$(ps --ppid "$parent_pid" --no-headers -o pid)"
 
-# Use the ps command to list all processes
-ps -e --forest -o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command | head -50
->>>>>>> 696fc8f5fbc40e13046b47b262c7f137f0a47d46
+  for pid in $processes; do
+    local process_info=$(ps -p "$pid" -o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,comm --no-headers)
+    echo "$prefix$process_info"
+    generate_process_tree "$pid" "$prefix  "
+  done
+}
+
+# Initial call to display all top-level processes
+generate_process_tree 1 ""
